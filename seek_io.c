@@ -18,7 +18,7 @@ main(int argc, char *argv[])
 
     fd = open(argv[1], O_RDWR | O_CREAT,
               S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP |
-              S_IROTH | S_IWOTH);   /* rw-rw-rw- */
+              S_IROTH | S_IWOTH); /* rw-rw-rw- */
     if (fd == -1)
         errExit("open");
 
@@ -41,10 +41,10 @@ main(int argc, char *argv[])
                 printf("%s: ", argv[ap]);
                 for (j = 0; j < numRead; j++) {
                     if (argv[ap][0] == 'r')
-                        printf("%c", isprint((unsigned char) buf[j]) ?
+                        printf("%c", isprint((unsigned char)buf[j]) ?
                                      buf[j] : '?');
                     else
-                        printf("%02x", (unsigned int) buf[j]);
+                        printf("%02x", (unsigned int)buf[j]);
                 }
                 printf("\n");
             }
@@ -56,7 +56,7 @@ main(int argc, char *argv[])
             numWritten = write(fd, &argv[ap][1], strlen(&argv[ap][1]));
             if (numWritten == -1)
                 errExit("write");
-            printf("%s: wrote %ld bytes\n", argv[ap], (long) numWritten);
+            printf("%s: wrote %ld bytes\n", argv[ap], (long)numWritten);
             break;
 
         case 's':   /* Change file offset */
